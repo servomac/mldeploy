@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block title %}Add a new model{% endblock %}
+
+{% block content %}
+<div class="">
+  <h1>Add a new model</h1>
+  <span>Upload a trained model to expose it as a prediction API endpoint</span>
+  <form action="{{ url_for('add_model') }}" method="post">
+    {{ form.name.label }} {{ form.name(class_="bg-gray-100 p-2", size=20) }}
+    {{ form.description.label }} {{ form.description(class_="p-2") }}
+    <input type="submit" value="Add model" class="px-4 py-3">
+    {{ form.csrf_token }}
+  </form>
+</div>
+{% endblock %}

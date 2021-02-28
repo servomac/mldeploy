@@ -1,6 +1,13 @@
-from flask import Flask, render_template, jsonify, request, redirect, url_for, flash
+from flask import Flask, render_template, jsonify, request, redirect, url_for
+
+from mldeploy.forms import AddModelForm
+
 
 app = Flask(__name__)
+app.config.update(dict(
+    SECRET_KEY="powerful secretkey",
+    WTF_CSRF_SECRET_KEY="a csrf secret key"
+))
 
 
 @app.route('/', methods=('GET',))
@@ -10,20 +17,11 @@ def dashboard():
 
 @app.route('/model', methods=('GET', 'POST'))
 def add_model():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        error = None
 
-        if not name:
-            error = 'Name is required.'
-
-        if error is None:
-            # insert into db
-            return redirect(url_for('model_detail'))
-
-        flash(error)
-
-    return render_template('add_model.html')
+    form = AddModelForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('add_model.html', form=form)
 
 
 @app.route('/model/<int:model_id>')

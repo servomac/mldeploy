@@ -10,9 +10,7 @@
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 </head>
 <body>
-  <nav>
-    <h1>MLDeploy</h1>
-  </nav>
+  {% include '_navbar.html' %}
   <section class="content">
     <header>
       {% block header %}{% endblock %}

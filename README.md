@@ -1,8 +1,8 @@
 # MLDeploy: Easily deploy your machine models to production
 
 **MLDeploy** is a web application to convert your machine learning models into restful web APIs.
-Upload your scikit-learn or Tensorflow trained model and specify the features of your dataset.
-A prediction endpoint 
+Upload your scikit-learn, Keras or Tensorflow trained model and specify the features of your dataset.
+A prediction endpoint is provided to the user, exposing its machine learning model, ready to accept instances to predict.
 
 ## Configuration
 
@@ -18,5 +18,4 @@ docker-compose up -d
 
  * Prediction JSON API
  * Input schema validation
- * Multiple libraries: scikit-learn, tensorflow
-
+ * Multiple ML libraries: scikit-learn, keras, tensorflow
