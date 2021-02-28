@@ -1,0 +1,6 @@
+nav {
+  border-bottom-width: 1px;
+  --border-opacity: 1;
+  border-color: rgba(244,245,247,var(--border-opacity));
+  height: 4rem;
+}
