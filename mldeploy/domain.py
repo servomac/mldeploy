@@ -2,19 +2,21 @@ import typing
 
 
 class Model:
+    LIBRARY_SKLEARN = 'scikit-learn'
+
     def __init__(
         self,
         id: int,
         name: str,
         description: str,
         training_library: str,
-        serialized_model: typing.IO,
+        serialized_model_path: str,
     ) -> None:
         self.id = id
         self.name = name
         self.description = description
         self.training_library = training_library
-        self.serialized_model = serialized_model
+        self.serialized_model_path = serialized_model_path
 
     @classmethod
     def from_dict(cls, data: typing.Dict):
@@ -23,7 +25,7 @@ class Model:
             name=data.get('name'),
             description=data.get('description'),
             training_library=data.get('training_library'),
-            serialized_model=data.get('serialized_model'),
+            serialized_model_path=data.get('serialized_model_path'),
         )
 
     def as_dict(self):

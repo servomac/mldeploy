@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask, render_template, jsonify, redirect, url_for
-from werkzeug.utils import secure_filename
 
 import mldeploy.services as services
 from mldeploy.forms import AddModelForm
