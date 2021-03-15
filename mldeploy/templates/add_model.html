@@ -21,6 +21,13 @@
 
       <div class="pt-4">{{ form.serialized_model.label }}</div>
       <div class="">{{ form.serialized_model(class="p-2") }}</div>
+      {% if form.serialized_model.errors %}
+        <ul class="errors">
+        {% for error in form.serialized_model.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
 
       <input type="submit" value="Add model" class="mt-24 px-4 py-3 w-1/4 bg-blue-500 text-white">
       {{ form.csrf_token }}

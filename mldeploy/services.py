@@ -34,6 +34,9 @@ def predict(repo, model_id, instances_data):
 
     if model.training_library == Model.LIBRARY_SKLEARN:
         clf = sklearn_load(model.serialized_model_path)
-        return clf.predict(instances_data)
+        try:
+            return clf.predict_proba(instances_data).tolist()
+        except AttributeError:
+            return clf.predict(instances_data).tolist()
 
-    return {}
+    return {'model.training_library': model.training_library}

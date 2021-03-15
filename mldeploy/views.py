@@ -11,7 +11,6 @@ repo = InMemoryRepo()
 
 @app.route('/', methods=('GET',))
 def dashboard():
-    # call service list models
     model_list = services.list_models(repo)
     return render_template('dashboard.html', models=model_list)
 
@@ -23,7 +22,7 @@ def add_model():
         data = {
             'name': form.name.data,
             'description': form.description.data,
-            'training_library': form.description.data,
+            'training_library': form.training_library.data,
             'serialized_model': form.serialized_model.data,
         }
         model = services.create_model(repo, data)
@@ -39,6 +38,6 @@ def model_detail(model_id):
 
 @app.route('/model/<int:model_id>/predict', methods=('POST',))
 def predict(model_id):
-    input_data = request.get_json()
-    prediction = services.predict(repo, model_id, input_data)
-    return jsonify(prediction, 201)
+    json_data = request.get_json()
+    prediction = services.predict(repo, model_id, json_data.get('input'))
+    return jsonify(prediction), 201

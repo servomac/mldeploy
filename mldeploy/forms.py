@@ -14,5 +14,5 @@ class AddModelForm(Form):
         (Model.LIBRARY_SKLEARN, Model.LIBRARY_SKLEARN), ('tensorflow', 'tensorflow')
     ])
     serialized_model = FileField('Serialized model file', validators=[
-        FileRequired(), FileAllowed(['jpg', 'png'], 'Images only!')
+        FileRequired(), FileAllowed(['joblib'], 'Joblib extension only!')
     ])

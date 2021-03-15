@@ -4,6 +4,8 @@
 Upload your scikit-learn, Keras or Tensorflow trained model and specify the features of your dataset.
 A prediction endpoint is provided to the user, exposing its machine learning model, ready to accept instances to predict.
 
+## Usage
+
 ## Configuration
 
 TODO
