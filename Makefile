@@ -6,3 +6,7 @@ mypy:
 
 lint:
 	docker-compose run --rm web pylint mldeploy --disable=missing-function-docstring,missing-module-docstring
+
+init-db:
+	docker-compose up -d
+	docker-compose run --rm web flask init-db

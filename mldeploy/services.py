@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 from .config import PERSISTED_MODELS_DIR
 from .loaders import sklearn_load
 from .repositories import AbstractRepo
-from .domain import Model
+from .domain import Model, TrainingLibrariesEnum
 
 
 def create_model(repo: AbstractRepo, data: typing.Dict) -> Model:
@@ -32,7 +32,7 @@ def get_model_detail(repo, model_id):
 def predict(repo, model_id, instances_data):
     model = repo.get(model_id)
 
-    if model.training_library == Model.LIBRARY_SKLEARN:
+    if model.training_library == TrainingLibrariesEnum.SKLEARN:
         clf = sklearn_load(model.serialized_model_path)
         try:
             return clf.predict_proba(instances_data).tolist()

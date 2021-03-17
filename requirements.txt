@@ -1,7 +1,9 @@
 Flask==1.1.2
 Flask-WTF==0.14.3
 joblib==1.0.1
+psycopg2==2.8.6
 scikit-learn==0.24.1
+SQLAlchemy==1.4.0
 WTForms==2.3.3
 
 # Devel and test

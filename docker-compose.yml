@@ -10,5 +10,12 @@ services:
     ports:
       - "5000:5000"
 
+  db:
+      image: postgres:12.3
+      environment:
+          - POSTGRES_USER=admin
+          - POSTGRES_PASSWORD=pass
+          - POSTGRES_DB=mldeploy
+
 volumes:
   models: {}

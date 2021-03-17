@@ -1,6 +1,8 @@
 import abc
 import itertools
 
+from mldeploy.domain import Model
+
 
 class AbstractRepo(abc.ABC):
     @abc.abstractmethod
@@ -48,3 +50,28 @@ class InMemoryRepo(AbstractRepo):
             return element
 
         return None
+
+
+class SqlAlchemyRepo(AbstractRepo):
+    def __init__(self, session, domain_class):
+        self.domain_class = domain_class
+        self.session = session
+
+    def add(self, data):
+        self.session.add(data)
+        self.session.commit()
+        return data
+
+    def get(self, identifier: int):
+        return self.session.query(self.domain_class).get(identifier)
+
+    def list(self):
+        return self.session.query(self.domain_class).all()
+
+    def delete(self, id):
+        pass
+
+
+class SqlAlchemyModelRepo(SqlAlchemyRepo):
+    def __init__(self, session):
+        super().__init__(session, Model)
