@@ -8,6 +8,8 @@
 
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
   {% include '_navbar.html' %}
@@ -20,5 +22,7 @@
     {% endfor %}
     {% block content %}{% endblock %}
   </section>
+
+  {% block js %}{% endblock %}
 </body>
 </html>

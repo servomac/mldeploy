@@ -4,6 +4,54 @@
 
 {% block content %}
 <section class="px-4 sm:px-6 lg:px-4 xl:px-6 pt-4 pb-4 sm:pb-6 lg:pb-4 xl:pb-6 space-y-4">
-  <h2 class="text-lg leading-6 font-medium text-black">{{ model.name }}</h2>
+  <div class="grid grid-flow-row grid-rows-2 grid-cols-2">
+    <div>
+      <h2 class="text-lg leading-6 font-medium text-black">{{ model.name }}</h2>
+    </div>
+    <div class="">
+      <ul class="flex">
+        <li class="flex-1 mr-2">
+          <a
+            class="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
+            onclick="console.log('change content to '); setActiveTab('detail');"
+            href="#">Model detail</a>
+        </li>
+        <li class="flex-1 mr-2">
+          <a
+            class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+            onclick="console.log('change content to dashboard'); setActiveTab('dashboard');"
+            href="#">Dashboard</a>
+        </li>
+        <li class="text-center flex-1">
+          <a
+            class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+            onclick="console.log('change content to edit'); setActiveTab('edit');"
+            href="#">Edit</a>
+        </li>
+      </ul>
+    </div>
+    <div class="pt-6 bg-blue-500 col-span-2" id="detail">
+      Detail
+    </div>
+    <div class="pt-6 hidden col-span-2" id="dashboard">
+      Hidden dashboard
+    </div>
+    <div class="pt-6 hidden col-span-2" id="edit">
+      Hidden Edit
+    </div>
+  </div>
 </section>
+{% endblock %}
+
+{% block js %}
+<script>
+  function setActiveTab(tab) {
+    console.log('set active tab', tab);
+    $('#detail').addClass('hidden');
+    $('#dashboard').addClass('hidden');
+    $('#edit').addClass('hidden');
+
+    $('#' + tab).removeClass('hidden');
+  }
+</script>
 {% endblock %}
